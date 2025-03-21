@@ -7,7 +7,7 @@ try {
        
     if (!city) {
       return res.status(400).json({
-      message: 'Imput a city Name'
+      message: 'Input a city Name'
     });
     }
     const response = await axios.get(
