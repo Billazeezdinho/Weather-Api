@@ -15,13 +15,14 @@ try {
                 
    );
        
-  const   {name, main, weather, wind} = response?.data;
+  const   {name, sys, main, weather, wind } = response?.data;
        
       const weatherData = {
-        city: name,
+        city: `${name} ${sys.country}`,
         temperature: main.temp,
         condition: weather[0].description,
         wind_speed: wind.speed,
+        humidity: main.humidity
       };
      res.status(200).json({
       message: "Successfully fetched your weather data",
