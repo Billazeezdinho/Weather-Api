@@ -32,10 +32,15 @@ try {
         
 
   }catch(error){
-    console.log(error.message)
-    res.status(500).json({
-    message: 'Internal Server Error'
-    })
+    if(error.response && error.response.status === 404){
+      return res.status(404).json({
+        message: 'City Not found' 
+      });
+    }else{
+      return res.status(500).json({
+        message:'An error occurred while fetching weather data'
+      })
+    }
         
   }
-}
+};
